@@ -12,3 +12,8 @@ Aby wejść w kontener:
 ```
 docker compose exec php bash
 ```
+
+Przykładowe użycie serwisu:
+```
+bin/console calculate -- -3 - 3
+```
