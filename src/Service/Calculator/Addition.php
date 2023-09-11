@@ -8,6 +8,8 @@ use Psr\Log\LoggerInterface;
 
 class Addition implements CalculatorInterface
 {
+    protected const ALLOWED_OPERATION = '+';
+
     public function __construct(
         private readonly LoggerInterface $logger
     ) {
@@ -20,5 +22,10 @@ class Addition implements CalculatorInterface
         );
 
         return $first + $second;
+    }
+
+    public function canBeUsed(string $operation): bool
+    {
+        return $operation === self::ALLOWED_OPERATION;
     }
 }
