@@ -8,3 +8,7 @@ Uruchom projekt w przeglądarce:
 ```
 https://localhost
 ```
+Aby wejść w kontener:
+```
+docker compose exec php bash
+```
