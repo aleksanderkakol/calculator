@@ -16,25 +16,25 @@ class AdditionTest extends TestCase
             'Positive numbers' => [
                 'first' => 1,
                 'second' => 3,
-                'expectedResult' => 4,
+                'expectedResult' => 4.0,
                 'exception' => null,
             ],
             'Negative numbers' => [
                 'first' => -2,
                 'second' => -3,
-                'expectedResult' => -5,
+                'expectedResult' => -5.0,
                 'exception' => null,
             ],
             'Positive and negative numbers' => [
                 'first' => -2,
                 'second' => 3,
-                'expectedResult' => 1,
+                'expectedResult' => 1.0,
                 'exception' => null,
             ],
             'Zeros' => [
                 'first' => 0,
                 'second' => 0,
-                'expectedResult' => 0,
+                'expectedResult' => 0.0,
                 'exception' => null,
             ],
             'String argument' => [
@@ -53,7 +53,7 @@ class AdditionTest extends TestCase
     }
 
     /** @dataProvider additionDataProvider */
-    public function testAddition($first, $second, ?int $expectedResult, ?string $exception): void
+    public function testAddition($first, $second, ?float $expectedResult, ?string $exception): void
     {
         $service = new Addition(new NullLogger());
 

@@ -13,7 +13,7 @@ class Addition implements CalculatorInterface
     ) {
     }
 
-    public function calculate(int $first, int $second): int
+    public function calculate(float $first, float $second): float
     {
         $this->logger->info(
             sprintf('Dodawanie %u i %u', $first, $second)

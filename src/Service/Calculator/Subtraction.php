@@ -13,7 +13,7 @@ class Subtraction implements CalculatorInterface
     ) {
     }
 
-    public function calculate(int $first, int $second): int
+    public function calculate(float $first, float $second): float
     {
         $this->logger->info(
             sprintf('Odejmowanie %u i %u', $first, $second)

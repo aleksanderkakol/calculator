@@ -13,7 +13,7 @@ class Division implements CalculatorInterface
     ) {
     }
 
-    public function calculate(int $first, int $second): int
+    public function calculate(float $first, float $second): float
     {
         $this->logger->info(
             sprintf('Dzielenie %u przez %u', $first, $second)
