@@ -4,38 +4,38 @@ declare(strict_types=1);
 
 namespace App\Tests\Unit\Service\Calculator;
 
-use App\Service\Calculator\Subtraction;
+use App\Service\Calculator\Division;
 use PHPUnit\Framework\TestCase;
 use Psr\Log\NullLogger;
 
-class SubtractionTest extends TestCase
+class DivisionTest extends TestCase
 {
-    public function subtractionDataProvider(): array
+    public function divisionDataProvider(): array
     {
         return [
             'Positive numbers' => [
                 'first' => 3,
                 'second' => 1,
-                'expectedResult' => 2.0,
+                'expectedResult' => 3,
                 'exception' => null,
             ],
             'Negative numbers' => [
                 'first' => -2,
                 'second' => -3,
-                'expectedResult' => 1.0,
+                'expectedResult' => 0.6666,
                 'exception' => null,
             ],
             'Positive and negative numbers' => [
                 'first' => -2,
                 'second' => 3,
-                'expectedResult' => -5.0,
+                'expectedResult' => -0.6666,
                 'exception' => null,
             ],
             'Zeros' => [
                 'first' => 0,
                 'second' => 0,
-                'expectedResult' => 0.0,
-                'exception' => null,
+                'expectedResult' => null,
+                'exception' => \DivisionByZeroError::class,
             ],
             'String argument' => [
                 'first' => '10',
@@ -52,10 +52,10 @@ class SubtractionTest extends TestCase
         ];
     }
 
-    /** @dataProvider subtractionDataProvider */
-    public function testSubtraction($first, $second, ?float $expectedResult, ?string $exception): void
+    /** @dataProvider divisionDataProvider */
+    public function testDivision($first, $second, ?float $expectedResult, ?string $exception): void
     {
-        $service = new Subtraction(new NullLogger());
+        $service = new Division(new NullLogger());
 
         if ($exception) {
             $this->expectException($exception);
@@ -63,6 +63,6 @@ class SubtractionTest extends TestCase
 
         $result = $service->calculate($first, $second);
 
-        $this->assertSame($expectedResult, $result);
+        $this->assertEqualsWithDelta($expectedResult, $result, 0.0001);
     }
 }

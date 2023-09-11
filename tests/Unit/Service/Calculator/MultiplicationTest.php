@@ -4,31 +4,31 @@ declare(strict_types=1);
 
 namespace App\Tests\Unit\Service\Calculator;
 
-use App\Service\Calculator\Subtraction;
+use App\Service\Calculator\Multiplication;
 use PHPUnit\Framework\TestCase;
 use Psr\Log\NullLogger;
 
-class SubtractionTest extends TestCase
+class MultiplicationTest extends TestCase
 {
-    public function subtractionDataProvider(): array
+    public function multiplicationDataProvider(): array
     {
         return [
             'Positive numbers' => [
                 'first' => 3,
                 'second' => 1,
-                'expectedResult' => 2.0,
+                'expectedResult' => 3.0,
                 'exception' => null,
             ],
             'Negative numbers' => [
                 'first' => -2,
                 'second' => -3,
-                'expectedResult' => 1.0,
+                'expectedResult' => 6.0,
                 'exception' => null,
             ],
             'Positive and negative numbers' => [
                 'first' => -2,
                 'second' => 3,
-                'expectedResult' => -5.0,
+                'expectedResult' => -6.0,
                 'exception' => null,
             ],
             'Zeros' => [
@@ -52,10 +52,10 @@ class SubtractionTest extends TestCase
         ];
     }
 
-    /** @dataProvider subtractionDataProvider */
-    public function testSubtraction($first, $second, ?float $expectedResult, ?string $exception): void
+    /** @dataProvider multiplicationDataProvider */
+    public function testMultiplication($first, $second, ?float $expectedResult, ?string $exception): void
     {
-        $service = new Subtraction(new NullLogger());
+        $service = new Multiplication(new NullLogger());
 
         if ($exception) {
             $this->expectException($exception);

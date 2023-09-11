@@ -13,7 +13,7 @@ class Multiplication implements CalculatorInterface
     ) {
     }
 
-    public function calculate(int $first, int $second): int
+    public function calculate(float $first, float $second): float
     {
         $this->logger->info(
             sprintf('Mnożenie %u razy %u', $first, $second)
